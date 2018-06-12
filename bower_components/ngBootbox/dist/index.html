@@ -1,0 +1,161 @@
+<html ng-app="cotizador">
+
+<head>
+    <title>Enviar Cotizacion</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/FormCtrl.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="model/enviar.php"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/s/bootstrap.min.css"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootbox/bootbox.js"></script>
+    <script src="bower_components/ngBootbox/dist/ngBootbox.min.js"></script>
+
+
+
+</head>
+
+<body ng-controller="FormCtrl as form">
+    <div  class="card" >
+            <div class="card-header">Datos Personales</div>
+            <div class="card-body">
+            
+            <form class="form-group" name="cotizar">
+            <div class="row">
+                <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="nombre" placeholder="Nombre" required><br>
+                <input type="text" class="form-control" ng-model="direccion" placeholder="Direccion" required><br></div>
+                <div class="col-lg-4"><input type="email" class="form-control" ng-model="email" placeholder="Email"><br>
+                <input type="number" class="form-control" ng-model="telefono" placeholder="Telefono" required><br><br></div>
+                <div class="col-lg-4"><input type="radio"  ng-model="tipopersona" value="Empresa">Empresa &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio"  ng-model="tipopersona" value="Persona" >Persona <br><br>
+                <textarea name="" id="" cols="30" rows="4" ng-model="nota">Nota</textarea>
+            
+                </div>
+
+            </div>
+            </div>
+
+            <div class="card-header">Cotizador De Ventanas</div>
+
+            <div class="card-body">
+                    <div class="row" >
+                    <div class="col-lg-3" >
+                        
+                        <input class="form-control" type="number" class="text" ng-model="form.ventana.cantidadmodel" placeholder="Cantidad" required>
+                        <br>
+                        <input type="radio" class="radio" value="Aluminio" ng-model="form.ventana.materialmodel">Aluminio &nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        <input type="radio" ng-model="form.ventana.materialmodel" value="PVC" >Pvc
+                        <br>
+                        <br>
+                        <select class="form-control" ng-model="form.ventana.tipomodel" ng-options="tipo for tipo in tipo " required>
+                            <option value="">Tipo</option>
+
+                        </select>
+                        <br>
+                        <select class="form-control" ng-model="form.ventana.colormodel" ng-options="colo for colo in color" required>
+                            <option value="">Color</option>
+
+                        </select><br>
+
+                        <select name="" id="" class="form-control" ng-model="form.ventana.cristalmodel" ng-options="cris for cris in cristal" required>
+                                <option value="">Cristal</option>
+                        </select><br>
+                        {{form.ventana.cristalmodel}}
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">Medidas:</label><br>
+                    <div class="row" style="margin-left:10px;">
+                    <input type="number" class="form-control med" ng-model="form.ventana.anchomodel" placeholder="ancho" required> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="number" class="form-control med" ng-model="form.ventana.altomodel" placeholder="Alto" required><br>
+                    <br>
+                    </div><br><br>
+
+                     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                          <div class="card-body">
+                            <h5 class="card-title text-center">Metros a Milimetros</h5>
+                              <p class="card-text text-center">1 Metro = 1.000 mm <br>
+                              5 Metros = 5.000 mm <br>
+                              10 Metros=10.000 mm</p>
+                            </div>
+                     </div>
+
+                     <br>
+                    
+                    </div>
+                    <div class="col-lg-2">
+                       <input  type="radio" value="Paño fijo" ng-model="form.ventana.tipomodel" > 
+                       <img ng-src="images/fijo.jpg" alt="" class="ventana"> <br>
+                       <label for="">&nbsp;&nbsp;&nbsp;	Pa&ntilde;o Fijo</label><br><br>
+                       <input type="radio" value="proyectante" ng-model="form.ventana.tipomodel" >
+                       <img ng-src="images/proyectante.jpg" alt="" class="ventana "><br>
+                       <label for="">&nbsp;&nbsp;Proyectante</label><br><br>
+                       <input type="radio" value="Abatir" ng-model="form.ventana.tipomodel" >
+                       <img ng-src="images/abatir.jpg" alt="" class="ventana"><br>
+                       <label for="">&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp; Abatir</label><br><br>
+
+                    </div>
+                    <div class="col-lg-2">
+                            <input  type="radio" value="corredera 1 hoja" ng-model="form.ventana.tipomodel" > 
+                            <img ng-src="images/corredera1.png" alt="" class="corredera"><br>
+                            <label for="">&nbsp;&nbsp;Corredera <br>1 hoja m&oacute;vil</label><br><br><br>
+                            <input  type="radio" value="Puerta de Abatir" ng-model="form.ventana.tipomodel" > 
+                                <img ng-src="images/puerta-abatir.jpg" alt="" class="ventana"> <br>
+                                <label for="">&nbsp;&nbsp;&nbsp;&nbsp; Puerta De <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Abatir</label><br><br>
+                           
+                         </div>
+                         <div class="col-lg-2">
+                                <input type="radio" value="Corredera 2 hojas" ng-model="form.ventana.tipomodel" >
+                                <img ng-src="images/corredera2.png" alt="" class="corredera"><br>
+                                <label for="">&nbsp;&nbsp;Corredera <br>2 hojas m&oacute;viles</label><br>
+                                <input type="radio" value="Oscilo Batiente" >
+                                <img ng-src="images/oscilo.png" alt="" class="corredera"><br>
+                                <label for="">&nbsp; Oscilo Batiente</label><br><br>
+         
+                                <input type="radio" value="Oscilo Paralela" ng-model="form.ventana.tipomodel">
+                                <img ng-src="images/paralela.png" alt="" class="paralela"><br>
+                                <label for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Oscilo-Paralela</label>
+                                <span ng-bind="form.ventana.id=0"></span>
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block center " style="max-width:60%;"  ng-click="form.agregar()" >
+                        Agregar Ventana
+                    </button><br>
+                    <br><br><br>
+                    <button class="btn btn-primary btn-lg btn-block center " style="max-width:60%;"  ng-click="enviar()" >
+                            Enviar
+                    </button>        
+                </div><!--ROW-->
+          
+            </div>
+        
+        </div>
+        <!--panellbody-->
+    </div>
+    <!--panel default-->
+    </div>
+    <br>
+   
+    <div ng-repeat="p in form.ventanas track by p.id ">
+        <div class="card" ng-if="p.id!=1">
+        <div class="card-header" style="background-color:grey !important"><b>id:</b>{{p.id}}</div>
+        <div class="card-body">
+        <b>Tipo: </b>{{p.tipomodel}}
+        <b>Cantidad:</b>{{p.cantidadmodel}} &nbsp;&nbsp;
+        <b>Material:</b>{{p.materialmodel}} &nbsp;&nbsp;
+        <b>Color:</b>{{p.colormodel}}&nbsp;&nbsp;
+        <b>Cristal:</b>{{p.cristalmodel}}&nbsp;&nbsp;
+        <b>Ancho:</b>{{p.anchomodel}} X
+        <b>Alto:</b>{{p.altomodel}} </div>
+        
+         </div>
+    </div>
+</body>
+
+</html>
